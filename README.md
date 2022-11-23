@@ -1,0 +1,2 @@
+# AndroidBeschlunigungsSensor
+Daten des Beschleunigungssensors auswerten
