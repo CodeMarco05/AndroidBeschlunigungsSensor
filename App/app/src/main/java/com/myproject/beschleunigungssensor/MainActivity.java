@@ -41,9 +41,9 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
             float y = sensorEvent.values[1];
             float z = sensorEvent.values[2];
 
-            tv_x.setText("" + x);
-            tv_y.setText("" + y);
-            tv_z.setText("" + z);
+            tv_x.setText("X: " + x);
+            tv_y.setText("Y: " + y);
+            tv_z.setText("Z: " + z);
         }
 
     }
