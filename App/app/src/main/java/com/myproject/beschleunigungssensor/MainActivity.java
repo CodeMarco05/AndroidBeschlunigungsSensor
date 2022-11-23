@@ -1,6 +1,7 @@
 package com.myproject.beschleunigungssensor;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 
 import android.content.Context;
 import android.hardware.Sensor;
@@ -22,6 +23,8 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+
         tv_x = findViewById(R.id.tv_x);
         tv_y = findViewById(R.id.tv_y);
         tv_z = findViewById(R.id.tv_z);
@@ -37,9 +40,9 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         Sensor mySensor = sensorEvent.sensor;
 
         if (mySensor.getType() == Sensor.TYPE_ACCELEROMETER) {
-            float x = sensorEvent.values[0];
-            float y = sensorEvent.values[1];
-            float z = sensorEvent.values[2];
+            double x = sensorEvent.values[0];
+            double y = sensorEvent.values[1];
+            double z = sensorEvent.values[2];
 
             tv_x.setText("X: " + x);
             tv_y.setText("Y: " + y);
