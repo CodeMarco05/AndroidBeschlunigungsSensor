@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 
 
         senSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
-        senAccelerometer = senSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
+        senAccelerometer = senSensorManager.getDefaultSensor(Sensor.TYPE_LINEAR_ACCELERATION);
         senSensorManager.registerListener(this, senAccelerometer , SensorManager.SENSOR_DELAY_NORMAL);
     }
 
@@ -39,15 +39,13 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     public void onSensorChanged(SensorEvent sensorEvent) {
         Sensor mySensor = sensorEvent.sensor;
 
-        if (mySensor.getType() == Sensor.TYPE_ACCELEROMETER) {
-            double x = sensorEvent.values[0];
-            double y = sensorEvent.values[1];
-            double z = sensorEvent.values[2];
+        double x = sensorEvent.values[0];
+        double y = sensorEvent.values[1];
+        double z = sensorEvent.values[2];
 
-            tv_x.setText("X: " + x);
-            tv_y.setText("Y: " + y);
-            tv_z.setText("Z: " + z);
-        }
+        tv_x.setText("X: " + x);
+        tv_y.setText("Y: " + y);
+        tv_z.setText("Z: " + z);
 
     }
 
