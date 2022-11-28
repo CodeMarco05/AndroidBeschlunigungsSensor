@@ -13,10 +13,12 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity implements SensorEventListener {
 
-    TextView tv_x, tv_y, tv_z;
+    TextView tv_x, tv_y, tv_z, tv_maxX, tv_maxY, tv_maxZ;
 
     private SensorManager senSensorManager;
     private Sensor senAccelerometer;
+
+    private double maxX, maxZ, maxY;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +30,10 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         tv_x = findViewById(R.id.tv_x);
         tv_y = findViewById(R.id.tv_y);
         tv_z = findViewById(R.id.tv_z);
+
+        tv_maxX = findViewById(R.id.tv_maxX);
+        tv_maxY = findViewById(R.id.tv_maxY);
+        tv_maxZ = findViewById(R.id.tv_maxZ);
 
 
         senSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
@@ -47,6 +53,18 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         tv_y.setText("Y: " + y);
         tv_z.setText("Z: " + z);
 
+        if(x > maxX){
+            maxX = x;
+            tv_maxX.setText("Max X: " + maxX);
+        }
+        if(y > maxY){
+            maxY = y;
+            tv_maxY.setText("Max Y: " + maxY);
+        }
+        if(z > maxZ){
+            maxZ = z;
+            tv_maxZ.setText("Max Z: " + maxZ);
+        }
     }
 
     @Override
